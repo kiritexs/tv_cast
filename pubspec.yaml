@@ -1,0 +1,47 @@
+name: tv_cast
+description: >-
+  Cast a video to a TV on the same network: finds DLNA and Google Cast devices, serves the file or stream through a local relay, and controls play, pause, seek and stop.
+version: 0.1.0
+homepage: https://kiritex.com
+topics:
+  - cast
+  - dlna
+  - chromecast
+  - airplay
+  - video
+
+repository: https://github.com/kiritexs/tv_cast
+issue_tracker: https://github.com/kiritexs/tv_cast/issues
+
+environment:
+  sdk: ^3.10.0
+  flutter: ">=3.38.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  xml: ^7.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.kiritex.tv_cast
+        pluginClass: TvCastPlugin
+      ios:
+        pluginClass: TvCastPlugin
+      windows:
+        pluginClass: TvCastPluginCApi
+      # No native code: casting itself is pure Dart, the platform extras are
+      # no-ops or pure Dart there (lib/src/platform/dart_plugin.dart).
+      linux:
+        dartPluginClass: TvCastDartPlugin
+        dartFileName: platform.dart
+      macos:
+        dartPluginClass: TvCastDartPlugin
+        dartFileName: platform.dart

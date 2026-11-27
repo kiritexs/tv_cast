@@ -1,0 +1,22 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- A TV plays from this phone while the app isn't in front: a
+         foreground service of the mediaPlayback type (Android 14+ needs the
+         type and its permission), a partial wake lock and a Wi-Fi lock while
+         it runs (both need WAKE_LOCK), and its notification with play, pause
+         and stop. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Searching for TVs: many phones drop multicast while their Wi-Fi
+         saves power, unless a multicast lock is held. -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <!-- Whether a VPN hides the TVs. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application>
+        <service
+            android:name=".CastKeepAliveService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+    </application>
+</manifest>
