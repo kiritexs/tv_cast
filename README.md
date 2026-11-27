@@ -12,6 +12,19 @@ The search, the relay and the DLNA and Google Cast clients are plain Dart
 (`dart:io`). Only the keep-alive, the Android multicast lock, the VPN check,
 the iOS search and AirPlay go through the platform.
 
+## When to use it
+
+Choose it when your app plays video it fetches itself and should send it to
+a TV without a vendor SDK.
+
+- DLNA and Google Cast in one API, on Android, iOS, Windows, Linux and macOS
+  (see [Platform support](#platform-support) for iOS's limits).
+- The relay serves a downloaded file, or re-streams a remote one with the
+  headers or cookies its host needs, so the TV never needs them.
+- Casting carries on while your app is in the background on Android and
+  Windows, with play, pause and stop in the Android notification.
+- On iOS, the system's own AirPlay button and route.
+
 ---
 
 ## Platform support
